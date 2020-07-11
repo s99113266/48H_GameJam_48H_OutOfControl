@@ -14,6 +14,24 @@ public class SwordMove : MonoBehaviour
 
     void Update()
     {
-        transform.Translate(transformPlayer.up * 0.008f);
+        transform.Translate(transformPlayer.up * 0.01f);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        //碰到玩家扣血
+        if (collision.gameObject.name == "player")
+        {
+            //大於0就繼續扣血
+            if (Player.Life > 0)
+                Player.Life--;
+            Destroy(gameObject);
+        }
+
+        //碰到牆壁
+        if (collision.gameObject.tag == "wall")
+        {
+            Destroy(gameObject);
+        }
     }
 }

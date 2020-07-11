@@ -12,23 +12,19 @@ public class Sword : MonoBehaviour
     /// </summary>
     public Transform transformSword;
 
-
-
     void Start()
     {
         transformPlayer = GameObject.Find("player").transform;
-        InvokeRepeating("SwordInsert",1, 0.8f);
+        InvokeRepeating("SwordInsert",1, 0.4f);
     }
 
 
     public void SwordInsert()
     {
-        GameObject gameObject = Instantiate(transformSword, new Vector3(Random.Range(-8, 8), Random.Range(-4, 4), 0), Quaternion.identity).gameObject;
-        gameObject.AddComponent<SwordMove>();
-    }
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (Player.Life > 0)
+        {
+            GameObject gameObject = Instantiate(transformSword, new Vector3(Random.Range(-8, 8), Random.Range(-4, 4), 0), Quaternion.identity).gameObject;
+            gameObject.AddComponent<SwordMove>();
+        }
     }
 }
