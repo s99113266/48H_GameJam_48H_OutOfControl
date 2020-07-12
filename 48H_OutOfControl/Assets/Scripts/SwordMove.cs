@@ -14,7 +14,7 @@ public class SwordMove : MonoBehaviour
 
     void Update()
     {
-        transform.Translate(transformPlayer.up * 0.01f);
+        transform.Translate(transformPlayer.up * 0.015f);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
